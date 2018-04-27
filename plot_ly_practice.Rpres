@@ -1,0 +1,40 @@
+plot_ly_practice
+========================================================
+author: Jose Montero
+date: April 27th, 2018
+autosize: true
+
+Executive summary
+========================================================
+
+In this practice, we will create a web page using R Markdown that features some interactive graphs using plotly package.
+
+Specifically, it will loaded the Wage data from ISLR package and create some interactive graphs with plot_ly.
+
+Load libraries and data
+========================================================
+
+```{r dataload, message = FALSE, warning = FALSE}
+library(plotly)
+library(ISLR)
+data(Wage)
+```
+
+Scatterplot
+========================================================
+
+```{r scatterplot, message = FALSE, warning = FALSE}
+p<-plot_ly(Wage, x = ~age, y = ~wage, type = "scatter", color = ~education)
+htmlwidgets::saveWidget(as.widget(p), file = "demo.html")
+```
+<iframe src="demo.html" style="position:absolute;height:70%;width:90%"></iframe>
+Boxplot
+========================================================
+```{r boxplot1, message = FALSE, warning = FALSE}
+p<-plot_ly(Wage, y = ~wage, color = ~jobclass, type = "box")
+htmlwidgets::saveWidget(as.widget(p), file = "demo2.html")
+
+```
+<iframe src="demo2.html" style="position:absolute;height:70%;width:90%"></iframe>
+
+
